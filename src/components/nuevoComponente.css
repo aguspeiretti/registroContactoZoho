@@ -1,0 +1,60 @@
+.card {
+  width: 400px;
+  height: 500px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  position: relative;
+  padding: 20px 10px;
+  box-shadow: 0px 0px 15px #838383;
+}
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.estado {
+  margin-top: 30px;
+}
+.campos {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.motivo {
+  flex-direction: column;
+}
+.peligro {
+  flex-direction: column;
+  align-items: center;
+}
+.DateColumn {
+  width: 120px;
+  border: none;
+  box-shadow: 0px 0px 5px #838383;
+}
+select {
+  width: 120px;
+  border: none;
+  box-shadow: 0px 0px 5px #838383;
+}
+.peligro {
+  flex-direction: column;
+  align-items: center;
+}
+.peligro select {
+  width: 220px;
+  margin-top: 10px;
+}
+.textArea {
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  box-shadow: 0px 0px 5px #838383;
+  padding: 10px;
+}
+label {
+  font-weight: 600;
+}

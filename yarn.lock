@@ -1791,6 +1791,11 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@sweetalert2/themes@^5.0.18":
+  version "5.0.18"
+  resolved "https://registry.npmjs.org/@sweetalert2/themes/-/themes-5.0.18.tgz"
+  integrity sha512-eXGnVZc9Y2paoE6xQKmNBIR5tf3lp6ZetSqo2tnLeC9w4nq20oCLMjGXeKiS4cf1xnudUvH7ScKLYqCnYLpSEw==
+
 "@testing-library/dom@^8.5.0":
   version "8.19.0"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.19.0.tgz"
@@ -8520,6 +8525,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.0.0:
+  version "11.14.0"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.14.0.tgz"
+  integrity sha512-kF1Q/+GtZZXr+rYVcBNwlEsnxP089CpDbck+MYjvLaQj9x4fzHqN9UhlkHOIR0k09LVu2sx8cU9BnvRlxWIZqg==
 
 symbol-tree@^3.2.4:
   version "3.2.4"

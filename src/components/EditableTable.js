@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,6 +14,7 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
     getFields();
   }, []);
 
+  // funcion para traer los campos desplegables y filtrarlos
   const getFields = (entrity) => {
     return new Promise(function (resolve, reject) {
       window.ZOHO.CRM.META.getFields({ Entity: "Recontactos" })
@@ -25,57 +27,17 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
         });
     });
   };
-
-  // funcion para traer los campos desplegables y filtrarlos
-
   const getFieldValues = (fields, apiName) => {
     const field = fields.find((item) => item.api_name === apiName);
     return field ? field.pick_list_values || [] : [];
   };
+  const Estado = getFieldValues(fields, "Estado");
   const Estado_del_cliente = getFieldValues(fields, "Estado_del_cliente");
   const Peligro_respecto_a_baja = getFieldValues(
     fields,
     "Peligro_respecto_a_baja"
   );
   const A_la_espera_de = getFieldValues(fields, "A_la_espera_de");
-
-  const optionsEstado_del_cliente = [
-    "",
-    "ENOJADO",
-    "TRANQUILO",
-    "APURADO",
-    "NO COOPERA",
-    "IMPORTANTE",
-  ];
-
-  const optionsPeligro_respecto_a_baja = [
-    "",
-    "BAJA/CAIDO",
-    "EN CONTRA",
-    "NO PUEDE PAGAR",
-    "REACTIVA POR ENTREGAS",
-    "REACTIVA SEGURO",
-    "ESPERA REASIGNAR",
-    "ESPERA PROFESIONAL",
-    "ESPERA INFORMACIÓN",
-    "ESPERA FEEDBACK",
-    "ESPERANDO APTO",
-    "NO TIENE SUPERVISOR",
-  ];
-
-  const optionsA_la_espera_de = [
-    "",
-    "Información cliente",
-    "Respuesta cliente",
-    "Pago",
-    "Respuesta profesional",
-    "Respuesta coordinación",
-    "Ventas",
-    "Feedback",
-    "Reasignar",
-    "Apto",
-    "Elección de tema",
-  ];
 
   function convertDateFormat(dateString) {
     // Dividir la fecha en sus partes (año, mes, día)
@@ -95,7 +57,7 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
       Fecha_reactivado: null,
       Fecha_recontacto: null,
       Estado_del_cliente: "",
-      Estado: "Paralizado",
+      Estado: "-None-",
       Motivo_Situacion: "",
       A_la_espera_de: "",
       Peligro_respecto_a_baja: "",
@@ -143,7 +105,7 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
             <th>Estado</th>
             <th>Fecha del Paralizado</th>
             <th>Fecha Reactivado</th>
-            <th>A la Espera de</th>
+
             <th>Estado del Cliente</th>
             <th>Peligro respecto a Baja</th>
             <th>Fecha Recontacto</th>
@@ -166,8 +128,11 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
                     value={row.Estado}
                     onChange={(e) => handleChange(e, index, "Estado")}
                   >
-                    <option value="Paralizado">Paralizado</option>
-                    <option value="Pendiente">Pendiente</option>
+                    {Estado.map((tipo, index) => (
+                      <option key={index} value={tipo.display_value}>
+                        {tipo.display_value}
+                      </option>
+                    ))}
                   </select>
                 </td>
                 <td>
@@ -190,18 +155,7 @@ const EditableTable = ({ initialData, onTableDataChange }) => {
                     dateFormat="dd/MM/yyyy"
                   />
                 </td>
-                <td>
-                  <select
-                    value={row.A_la_espera_de}
-                    onChange={(e) => handleChange(e, index, "A_la_espera_de")}
-                  >
-                    {A_la_espera_de.map((tipo, index) => (
-                      <option key={index} value={tipo.display_value}>
-                        {tipo.display_value}
-                      </option>
-                    ))}
-                  </select>
-                </td>
+
                 <td>
                   <select
                     value={row.Estado_del_cliente}
